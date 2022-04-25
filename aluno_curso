@@ -1,0 +1,71 @@
+class Aluno:
+    def __init__(self,ra,nome):
+        self.ra = ra
+        self.nome = nome
+    def get_ra(self):
+        return self.ra
+    def set_ra(self, ra):
+        self.ra = ra
+    def get_nome(self):
+        return self.nome
+    def set_nome(self, nome):
+        self.nome = nome
+
+class Curso:
+    def __init__(self, nome, valor):
+        self.nome = nome
+        self.valor = valor
+        self.alunos = []
+    def get_nome(self):
+        return self.nome
+    def set_nome(self, nome):
+        self.nome = nome
+    def get_valor(self):
+        return self.valor
+    def set_valor(self, valor):
+        self.valor = valor
+    def insere_aluno(self, aluno):
+        self.alunos.append(aluno)
+    def mostra_dados_cursos(self):
+        print(f'\nDados: {self.nome}\n{self.valor}')
+
+    def consulta_nome_alunos(self):
+        if not self.alunos:
+            print("Lista vazia.")
+        else:
+            print(f'\nRelação alunos curso: {self.get_nome()}')
+            for o_aluno in self.alunos:
+                print(o_aluno.get_nome())
+
+    def consulta_dados_alunos(self):
+        if not self.alunos:
+            print("Lista vazia.")
+        else:
+            print(f'\nRelação dos launos do curso: {self.get_nome()}')
+            for o_aluno in self.alunos:
+                print(f'\nDados do alunos \nRa: {o_aluno.get_ra()}\nNome:{o_aluno.get_nome()}')
+
+
+if __name__ == '__main__':
+    aluno1 = Aluno('111', 'Rafa')
+    aluno2 = Aluno('222', 'Kramer')
+    aluno3 = Aluno('333', 'Bruno')
+
+
+    curso1 = Curso('Computação', 900)
+    curso2 = Curso('Engenharia', 1200)
+    curso1.insere_aluno(aluno1)
+    curso1.insere_aluno(aluno2)
+    curso1.insere_aluno(aluno3)
+
+    aluno4 = Aluno('444', 'Lucca')
+    aluno5 = Aluno('555', 'João')
+    aluno6 = Aluno('666', 'Markus')
+
+    curso2.insere_aluno(aluno4)
+    curso2.insere_aluno(aluno5)
+    curso2.insere_aluno(aluno6)
+
+    curso1.consulta_nome_alunos()
+    curso2.consulta_nome_alunos()
+    curso2.consulta_dados_alunos()
