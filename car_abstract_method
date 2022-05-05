@@ -1,0 +1,46 @@
+from abc import ABC, abstractmethod
+
+class Carro(ABC):
+    @abstractmethod
+    def chassi(self):
+        ...
+
+class Ferrari(Carro):
+    def __init__(self, nome,numeracao):
+        self.nome = nome
+        self.numeracao = numeracao
+    def get_nome(self):
+        return self.nome
+    def set_nome(self, novo_nome):
+        self.nome = novo_nome
+    def chassi(self):
+        return self.numeracao
+
+class Porsche(object):
+    def __init__(self, valor=10000,vl_maxima=100):
+        self.valor = valor
+        self.vl_maxima = vl_maxima
+    def get_valor(self):
+        return self.valor
+
+    def set_valor(self, novo_valor):
+        self.valor = novo_valor
+
+    def get_vl_maxima(self):
+        return self.vl_maxima
+
+    def set_vl_maxima(self,nova_vl):
+        self.vl_maxima = nova_vl
+
+if __name__ == '__main__':
+    PorschePreta = Porsche(13000, 220)
+    print(f"Valor Porsche: {PorschePreta.get_valor()}")
+    print(f"Velocidade Máxima: {PorschePreta.get_vl_maxima()}")
+    PorschePreta.set_vl_maxima(290)
+    print(f"Velocidade Máxima após modificações no carro: {PorschePreta.get_vl_maxima()}")
+    FerrariVermelha = Ferrari('Titan', 19997)
+    print(f"Nome da Ferrari: {FerrariVermelha.get_nome()}")
+    print(f"Chassi da Ferrari {FerrariVermelha.get_nome()}: {FerrariVermelha.chassi()}")
+    FerrariVermelha.set_nome('Atlas')
+    print(f"Novo nome da Ferrari: {FerrariVermelha.get_nome()}")
+    print(f"Chassi da Ferrari: {FerrariVermelha.chassi()}")
